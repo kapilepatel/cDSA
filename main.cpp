@@ -1,5 +1,5 @@
+#include "pattern/pattern.cpp"
 #include <iostream>
-
 int main() {
   // std::cout<< "Namaste Bharat!" << std::endl;
 
@@ -10,6 +10,8 @@ int main() {
   // std::cin >> score;
 
   // std::cout << "Score is : " << score;
+
+  fullPyramid();
 
   for (int i = 0; i < 5; i = i + 1) {
     // std::cout<<"0----5 "<< i << std::endl;
@@ -128,8 +130,7 @@ int main() {
     }
     for (int k = 0; k < i + 1; k++) {
       std::cout << "*";
-      if(k<i)
-      {
+      if (k < i) {
         std::cout << " ";
       }
     }
