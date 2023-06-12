@@ -9,6 +9,224 @@ using namespace std;
 // void fn1(int arr[]);
 
 int main() {
+
+  //
+
+  return 0;
+
+  // print peak element in a array which is more of a partially sorted array
+  int arr10[] = {0, 1, 3, 5, 8, 9, 5, 3, 2};
+  int arr10Size = sizeof(arr10) / sizeof(int);
+  int low10 = 0;
+  int high10 = arr10Size - 1;
+  int mid10;
+
+  while (low10 <= high10) {
+    mid10 = low10 + ((high10 - low10) / 2);
+    if (arr10[mid10] > arr10[mid10 - 1] && arr10[mid10] > arr10[mid10 + 1]) {
+      cout << " Found peak " << arr10[mid10];
+      return 0;
+    } else if (arr10[mid10] > arr10[mid10 - 1] &&
+               arr10[mid10] < arr10[mid10 + 1]) {
+      cout << " this is in increasing order look in right side " << arr10[mid10]
+           << " " << arr10[mid10 + 1] << endl;
+      low10 = mid10 + 1;
+    } else {
+      // means find item in left
+      high10 = mid10 - 1;
+      cout << " means find item in left" << arr10[mid10 - 1] << " "
+           << arr10[mid10] << endl;
+    }
+  }
+
+  return 0;
+
+  // find firat occurance of an item in sorted array
+  // using Binary search
+
+  int arr9[] = {1, 3, 3, 3, 4, 4, 19, 25};
+
+  // low 5 mid 4 high 4
+  int find9 = 4;
+  int arr9Size = sizeof(arr9) / sizeof(int);
+  int low9 = 0;
+  int high9 = arr9Size - 1;
+  int mid9;
+  int foundIndex = -1; // not found
+  while (low9 <= high9) {
+    mid9 = low9 + ((high9 - low9) / 2);
+    if (arr9[mid9] == find9) {
+      cout << "Found at index " << mid9;
+      foundIndex = mid9;
+      high9 = mid9 - 1;
+      // return 0;
+    } else if (find9 < arr9[mid9]) {
+
+      high9 = mid9 - 1;
+      cout << "look left " << high9;
+    } else {
+      // means find item in right side
+      low9 = mid9 + 1;
+      cout << "look right " << low9;
+    }
+  }
+
+  cout << "found index " << foundIndex;
+  return 0;
+
+  // Binary search
+  // 0  1  2  3   4   5   6
+  int arr8[] = {1, 3, 4, 5, 9, 11, 19, 25};
+
+  // low 5 mid 4 high 4
+  int find = 11;
+  int arr8Size = sizeof(arr8) / sizeof(int);
+  int low = 0;
+  int high = arr8Size - 1;
+  int mid;
+  while (low <= high) {
+    mid = low + ((high - low) / 2);
+    if (arr8[mid] == find) {
+      cout << "Found at index " << mid;
+      return 0;
+    } else if (find < arr8[mid]) {
+      high = mid - 1;
+    } else {
+      // means find item in right side
+      low = mid + 1;
+    }
+  }
+  cout << "Not found";
+
+  return 0;
+  // Sum two numbers represented in array
+  // int arr5[] = {1, 2, 3};
+  // int arr6[] = {2, 4, 9};
+  // int arr5[] = {1, 2, 9};
+  // int arr6[] = { 6, 5};
+  int arr5[] = {9, 9, 9};
+  // int arr6[] = {9, 9, 9};
+  int arr6[] = {0, 0, 0};
+  // int arr6[] = {0, 0, 0};
+  //  this array may be +1 size because suppose 99+99=198
+
+  int arr7[4] = {0};
+
+  int arr7Size = sizeof(arr7) / sizeof(int);
+  for (int i = 0; i < arr7Size; i++) {
+    cout << arr7[i] << " ";
+  }
+  cout << endl << endl;
+
+  int i = sizeof(arr5) / sizeof(int); // 3
+  int j = sizeof(arr6) / sizeof(int); // 2
+  int k = sizeof(arr7) / sizeof(int); // 4
+  // run loop based on the bigger size array
+  int singleNumberSum, sumLastDigit;
+  int carry = 0;
+  int arr5Item;
+  int arr6Item;
+  while (j > 0 || i > 0) {
+    arr5Item = 0;
+    arr6Item = 0;
+    if (i >= 1) {
+      arr5Item = arr5[i - 1];
+      cout << "first item " << arr5Item << endl;
+    }
+    if (j >= 1) {
+      arr6Item = arr6[j - 1];
+      cout << "second item " << arr6Item << endl;
+    }
+    singleNumberSum = arr5Item + arr6Item + carry;
+    cout << "sum " << singleNumberSum << endl;
+    // suppose sum is 14, take 4 and 1 apart
+    sumLastDigit = singleNumberSum % 10; // 14->10 ekum 10 bache 4
+    carry = singleNumberSum / 10;        // 14/10->1.4->1
+    arr7[k - 1] = sumLastDigit;
+    cout << "sumLastDigit " << sumLastDigit << endl;
+    cout << "carry " << carry << endl << endl;
+
+    i--;
+    j--;
+    k--;
+  }
+  if (carry > 0) {
+    arr7[k - 1] = carry;
+  }
+
+  for (int i = 0; i < arr7Size; i++) {
+    cout << arr7[i] << " ";
+  }
+
+  return 0;
+
+  // wave print a matrix
+  int arr4[3][3] = {{1, 2, 3}, {4, 5, 6}, {10, 11, 12}};
+  for (int r = 0; r < 3; r++) {
+    for (int c = 0; c < 3; c++) {
+      cout << arr4[r][c] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+
+  for (int c = 0; c < 3; c++) {
+    for (int r = 0; r < 3; r++) {
+      cout << arr4[r][c] << " ";
+    }
+    cout << "--";
+  }
+  cout << endl;
+  cout << endl;
+
+  for (int c = 0; c < 3; c++) {
+    int r;
+    // even column 0, 2
+    if (c % 2 == 0) {
+      for (int r = 0; r < 3; r++) {
+        cout << arr4[r][c] << " ";
+      }
+    } else {
+      for (int r = 2; r >= 0; r--) {
+        cout << arr4[r][c] << " ";
+      }
+    }
+
+    cout << endl;
+  }
+
+  return 0;
+  // array find 1 duplicate in a 1-n array
+  // int arr3[] = {4, 3, 2, 1, 3};
+  int arr3[] = {1, 2, 3, 4, 4};
+  int arreLength3 = sizeof(arr3) / sizeof(int);
+  // print the array in question
+  for (int i = 0; i < arreLength3; i++) {
+    cout << arr3[i] << " ";
+  }
+  cout << endl;
+  int duplicateValue;
+  for (int i = 0; i < arreLength3; i++) {
+    if (arr3[i] < 0) {
+      duplicateValue = i;
+      cout << duplicateValue << " is duplicate";
+      break;
+    } else {
+      arr3[arr3[i]] = -arr3[arr3[i]];
+    }
+  }
+  if (duplicateValue <= 0) {
+    cout << "No duplicate found";
+  }
+
+  cout << endl;
+  //  prinT
+  for (int i = 0; i < arreLength3; i++) {
+    cout << arr3[i] << " ";
+  }
+  cout << endl;
+
+  return 0;
   // move all negative to one side
   // we will put all negatives in left
   int arr2[] = {1, 2, -3, 4, -5, 6};
@@ -74,11 +292,10 @@ int main() {
   cout << endl;
 
   // first way, compare first element in array with rest of the elements and
-  // swap first elemnt with smallest element. second way, simply swap with first
-  // now move to second element and repeat
-  // occurance of smaller element and then start from first emelment again
-  // untill end of the array.
-  // then move to second element and repeat
+  // swap first elemnt with smallest element. second way, simply swap with
+  // first now move to second element and repeat occurance of smaller element
+  // and then start from first emelment again untill end of the array. then
+  // move to second element and repeat
 
   for (int i = 0; i < arrLength; i++) {
     int current = arr[i];
@@ -116,7 +333,8 @@ int main() {
 // 2 D array
 // int arr[3][3];
 
-// cout << "enter values for 2 D array(3*3), first row values, then second row "
+// cout << "enter values for 2 D array(3*3), first row values, then second row
+// "
 //         "values";
 // for (int i = 0; i < 3; i++) {
 //   for (int j = 0; j < 3; j++) {
